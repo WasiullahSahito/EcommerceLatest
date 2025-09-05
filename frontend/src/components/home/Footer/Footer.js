@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone, MessageCircle } from "lucide-react";
+import {MessageCircle } from "lucide-react";
 
 const Footer = () => {
   return (
