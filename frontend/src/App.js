@@ -20,14 +20,16 @@ import Navbar from "./components/navbar/Navbar";
 import Navigation from "./components/navigation/Navigation";
 import Products from "./pages/products/Products";
 import ProductDetailPage from "./pages/products/ProductDetailPage";
-import Wishlist from "./pages/Wishlist/Wishlist"; // Import Wishlist page
+import Wishlist from "./pages/Wishlist/Wishlist";
 
+// This Layout component wraps every page that is its child
 const Layout = () => {
   return (
     <div>
       <Navbar />
       <Navigation />
       <ScrollRestoration />
+      {/* Child routes will be rendered here */}
       <Outlet />
       <Footer />
     </div>
@@ -36,27 +38,23 @@ const Layout = () => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<Layout />}>
-        {/* ==================== Header Navlink Start here =================== */}
-        <Route index element={<Home />}></Route>
-        <Route path="/shop" element={<Shop />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/journal" element={<Journal />}></Route>
-        <Route path="/product/:id" element={<ProductDetailPage />} />
+    // The Layout is the parent for all pages that need a Navbar and Footer.
+    <Route path="/" element={<Layout />}>
+      {/* --- Main Pages --- */}
+      <Route index element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/journal" element={<Journal />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/product/:id" element={<ProductDetailPage />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/my-list" element={<Wishlist />} />
+      <Route path="/paymentgateway" element={<Payment />} />
 
-        {/* ==================== Header Navlink End here ===================== */}
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/my-list" element={<Wishlist />}></Route> {/* Wishlist Route */}
-        <Route path="/paymentgateway" element={<Payment />}></Route>
-
-        <Route path="/products" element={<Products />}></Route>
-      </Route>
-
-      {/* SignIn/SignUp pages - Layout ke bahar (without navbar/footer) */}
-      <Route path="/signup" element={<SignUp />}></Route>
-      <Route path="/signin" element={<SignIn />}></Route>
+      {/* --- Account Pages (CORRECTLY PLACED INSIDE LAYOUT) --- */}
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
     </Route>
   )
 );
