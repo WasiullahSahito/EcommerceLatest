@@ -89,7 +89,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           disabled={!product.inStock}
           className={`w-full py-2.5 px-4 rounded-lg font-medium transition-all duration-200 ${
             product.inStock 
-              ? 'bg-blue-500 hover:bg-blue-600 text-white transform hover:scale-[1.02] active:scale-[0.98]' 
+              ? 'bg-primeColor hover:bg-primeColor text-white transform hover:scale-[1.02] active:scale-[0.98]' 
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           }`}
         >

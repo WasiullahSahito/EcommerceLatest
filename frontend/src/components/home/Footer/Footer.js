@@ -1,5 +1,5 @@
 import React from "react";
-import {MessageCircle } from "lucide-react";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -20,7 +20,7 @@ const Footer = () => {
             (+91) 9876-543-210
           </span>
           <div className="flex items-center gap-2">
-            <MessageCircle className="text-primary w-8 h-8" />
+            <MessageCircle className="text-primeColor w-8 h-8" />
             <span className="text-sm font-semibold">
               Online Chat <br /> Get Expert Help
             </span>
@@ -64,16 +64,16 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Your Email Address"
-              className="w-full h-[45px] border border-gray-300 rounded-sm px-4 mb-3 focus:border-gray-500 outline-none"
+              className="w-full h-[45px] border border-gray-300 rounded-full px-4 mb-3 focus:border-gray-500 outline-none"
             />
             <button
               type="submit"
-              className="w-full bg-primary text-white py-3 rounded-sm font-medium hover:bg-primary/90 transition"
+              className="w-full bg-primareColor text-white py-3 rounded-sm font-medium hover:bg-primary/90 transition"
             >
               SUBSCRIBE
             </button>
-            <label className="flex items-start gap-2 mt-4 text-xs text-gray-600">
-              <input type="checkbox" className="mt-1" />
+            <label className="flex items-start gap-2 mt-4 text-xs text-gray-600 ">
+              <input type="checkbox" className="mt-1 bg-primeColor" />
               I agree to the terms and conditions and the privacy policy
             </label>
           </form>

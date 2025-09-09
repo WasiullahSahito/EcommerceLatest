@@ -23,37 +23,12 @@ const Navigation = () => {
       subcategories: [
         {
           name: 'Women',
-          items: ['Sarees', 'Tops', 'Jeans', 'Kurtas & Suits']
-        },
-        {
-          name: 'Girls',
-          items: ['Kurtas & Suits', 'Tops', 'Dresses']
         },
         {
           name: 'Men',
-          items: ['Shirts', 'T-Shirts', 'Jeans', 'Formal Wear']
-        }
-      ]
-    },
-    {
-      name: 'Electronics',
-      tagline: 'Tech That Powers Your World',
-      subcategories: [
-        {
-          name: 'Mobile',
-          items: ['Apple', 'Samsung', 'OPPO', 'Vivo']
         },
         {
-          name: 'Laptops',
-          items: ['Gaming Laptops', 'Business Laptops', 'Ultrabooks']
-        },
-        {
-          name: 'Smart Watch',
-          items: ['Apple Watch', 'Samsung Watch', 'Fitness Trackers']
-        },
-        {
-          name: 'Chargers',
-          items: ['Fast Chargers', 'Wireless Chargers', 'Power Banks']
+          name: 'Kids',
         }
       ]
     },
@@ -86,16 +61,8 @@ const Navigation = () => {
       ]
     },
     {
-      name: 'Groceries',
-      tagline: 'Fresh & Healthy Living'
-    },
-    {
       name: 'Beauty',
       tagline: 'Glow with Confidence'
-    },
-    {
-      name: 'Wellness',
-      tagline: 'Your Health, Our Priority'
     },
     {
       name: 'Jewellery',
@@ -174,96 +141,116 @@ const Navigation = () => {
   );
 
   return (
-    <nav className="navigation bg-white border-b border-gray-200">
-      <div className="container mx-auto px-4 flex items-center justify-between lg:justify-start gap-8">
-        {/* Shop by Categories Button */}
-        <div className="col_1 w-full lg:w-[20%]">
-          <button 
-            className="flex items-center gap-2 w-full text-black text-[14px] font-[500] py-4 hover:text-primeColor transition-colors"
-            onClick={toggleDrawer(true)}
-          >
-            <Menu className="text-[18px]" />
-            Shop By Categories
-            <ChevronDown className="text-[13px] ml-auto font-bold" />
-          </button>
+    <nav className="navigation bg-white border-b border-gray-200 shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center h-14">
+          
+          {/* Shop by Categories Button - Fixed width */}
+          <div className="flex-none w-64">
+            <button 
+              className="flex items-center gap-3 w-full text-gray-700 text-sm font-medium py-3 px-4 hover:text-orange-500 hover:bg-gray-50 transition-all duration-200 rounded-lg group"
+              onClick={toggleDrawer(true)}
+            >
+              <Menu className="w-5 h-5 text-gray-600 group-hover:text-orange-500" />
+              <span className="flex-grow text-left">Shop By Categories</span>
+              <ChevronDown className="w-4 h-4 text-gray-500 group-hover:text-orange-500 transform group-hover:rotate-180 transition-transform duration-200" />
+            </button>
 
-          <Drawer
-            anchor="left"
-            open={isCategoryMenuOpen}
-            onClose={toggleDrawer(false)}
-          >
-            {DrawerContent()}
-          </Drawer>
-        </div>
+            <Drawer
+              anchor="left"
+              open={isCategoryMenuOpen}
+              onClose={toggleDrawer(false)}
+            >
+              {DrawerContent()}
+            </Drawer>
+          </div>
 
-        {/* Main Navigation */}
-        <div className="col_2 hidden lg:block w-full lg:w-[60%]">
-          <ul className="flex items-center gap-3 nav">
-            <li className="list-none">
-              <a href="/" className="link transition text-[14px] font-[500]">
-                <button className="link transition font-[500] text-[rgba(0,0,0,0.8)] hover:text-primeColor py-4 px-2">
+          {/* Vertical Divider */}
+          <div className="hidden lg:block w-px h-8 bg-gray-200 mx-4"></div>
+
+          {/* Main Navigation - Flexible center area */}
+          <div className="hidden lg:flex flex-grow justify-center">
+            <ul className="flex items-center space-x-1">
+              <li>
+                <a 
+                  href="/" 
+                  className="flex items-center px-6 py-3 text-sm font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50 rounded-lg transition-all duration-200 border-b-2 border-transparent hover:border-orange-500"
+                >
                   Home
-                </button>
-              </a>
-            </li>
-            
-            {categories.map((category, index) => (
-              <li 
-                key={index}
-                className="list-none relative"
-                onMouseEnter={() => handleMenuHover(index)}
-                onMouseLeave={handleMenuLeave}
-              >
-                <a href={`/products?catId=${category.name.toLowerCase()}`} className="link transition text-[14px] font-[500]">
-                  <button className="link transition font-[500] text-[rgba(0,0,0,0.8)] hover:text-primeColor py-4 px-2">
-                    {category.name}
-                  </button>
                 </a>
-
-                {/* Submenu */}
-                {category.subcategories && activeMenu === index && (
-                  <div className="submenu absolute top-[120%] left-[0%] min-w-[200px] bg-white shadow-lg opacity-100 transition-all z-50 border rounded-lg">
-                    <ul className="py-2">
-                      {category.subcategories.map((subcategory, subIndex) => (
-                        <li key={subIndex} className="list-none w-full relative group">
-                          <a className="w-full" href={`/products?subCatId=${subcategory.name.toLowerCase()}`}>
-                            <button className="text-[rgba(0,0,0,0.8)] hover:text-pimeColor hover:bg-gray-50 w-full text-left justify-start rounded-none py-2 px-4 text-[14px]">
-                              {subcategory.name}
-                            </button>
-                          </a>
-                          
-                          {/* Third Level Menu */}
-                          {subcategory.items && (
-                            <div className="thirdLevel absolute top-[0%] left-[100%] min-w-[150px] bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-all border rounded-lg">
-                              <ul className="py-2">
-                                {subcategory.items.map((item, itemIndex) => (
-                                  <li key={itemIndex} className="list-none w-full">
-                                    <a className="w-full" href={`/products?item=${item.toLowerCase()}`}>
-                                      <button className="text-[rgba(0,0,0,0.8)] hover:text-primeColor hover:bg-gray-50 w-full text-left justify-start rounded-none py-2 px-4 text-[13px]">
-                                        {item}
-                                      </button>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </li>
-            ))}
-          </ul>
-        </div>
+              
+              {categories.map((category, index) => (
+                <li 
+                  key={index}
+                  className="relative"
+                  onMouseEnter={() => handleMenuHover(index)}
+                  onMouseLeave={handleMenuLeave}
+                >
+                  <a 
+                    href={`/products?catId=${category.name.toLowerCase()}`} 
+                    className="flex items-center px-6 py-3 text-sm font-medium text-gray-700 hover:text-orange-500 hover:bg-gray-50 rounded-lg transition-all duration-200 border-b-2 border-transparent hover:border-orange-500"
+                  >
+                    {category.name}
+                    {category.subcategories && (
+                      <ChevronDown className="w-3 h-3 ml-1 text-gray-500" />
+                    )}
+                  </a>
 
-        {/* Free Delivery Info */}
-        <div className="col_3 hidden lg:block w-[20%]">
-          <p className="text-[14px] font-[500] flex items-center gap-3 mb-0 mt-0 text-gray-700">
-            <Rocket className="text-[18px] text-primeColor" />
-            Free International Delivery
-          </p>
+                  {/* Submenu */}
+                  {category.subcategories && activeMenu === index && (
+                    <div className="absolute top-full left-0 mt-2 min-w-56 bg-white shadow-lg border border-gray-100 rounded-xl z-50 overflow-hidden">
+                      <div className="py-2">
+                        {category.subcategories.map((subcategory, subIndex) => (
+                          <div key={subIndex} className="relative group/sub">
+                            <a 
+                              href={`/products?subCatId=${subcategory.name.toLowerCase()}`}
+                              className="flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:text-orange-500 hover:bg-orange-50 transition-all duration-200"
+                            >
+                              <span>{subcategory.name}</span>
+                              {subcategory.items && (
+                                <ChevronDown className="w-3 h-3 -rotate-90 text-gray-400" />
+                              )}
+                            </a>
+                            
+                            {/* Third Level Menu */}
+                            {subcategory.items && (
+                              <div className="absolute left-full top-0 ml-2 min-w-48 bg-white shadow-lg border border-gray-100 rounded-xl opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 overflow-hidden">
+                                <div className="py-2">
+                                  {subcategory.items.map((item, itemIndex) => (
+                                    <a 
+                                      key={itemIndex}
+                                      href={`/products?item=${item.toLowerCase()}`}
+                                      className="block px-4 py-2 text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-50 transition-all duration-200"
+                                    >
+                                      {item}
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Vertical Divider */}
+          <div className="hidden lg:block w-px h-8 bg-gray-200 mx-4"></div>
+
+          {/* Free Delivery Info - Fixed width */}
+          <div className="hidden lg:flex flex-none w-64 justify-end">
+            <div className="flex items-center gap-3 px-4 py-2 ">
+              <Rocket className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span className="text-sm font-medium text-gray-700">
+                Free International Delivery
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

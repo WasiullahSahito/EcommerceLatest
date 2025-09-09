@@ -1,12 +1,10 @@
-import React from "react";
 import ProductSection from "../../common/ProductSection";
 import { productsData } from "../../../constants/productsData";
 
 const BestSellers = () => {
-  // Filter for products in the "Bags" category to display in this section.
-  // We select the first 8 for this example.
+  // Filter for products in the "Bags" category and take first 8
   const bestSellerProducts = productsData
-    .filter(p => p.category === "Bags")
+    .filter((p) => p.category === "Bags")
     .slice(0, 8);
 
   return (

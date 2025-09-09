@@ -31,7 +31,7 @@ const categories = [
 const BannerBottom = () => {
   return (
     <div className="w-full py-10 px-4">
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-12">
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12">
         {categories.map((cat) => (
           <div
             key={cat.id}

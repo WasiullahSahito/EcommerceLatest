@@ -65,7 +65,7 @@ const ProductList = ({ products, viewMode = 'grid' }) => {
           <select 
             value={sortBy} 
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primeColor focus:ring-500 focus:border-transparent"
           >
             <option value="default">Sort by Default</option>
             <option value="priceLow">Price: Low to High</option>

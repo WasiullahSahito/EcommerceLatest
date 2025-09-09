@@ -26,58 +26,46 @@ const ProductFilter = ({ onFilterChange }) => {
   const [priceRange, setPriceRange] = useState([0, 60000]);
   const [selectedRatings, setSelectedRatings] = useState([]);
 
-  const handleCategoryChange = (categoryId) => {
-    let updatedCategories;
-    if (selectedCategories.includes(categoryId)) {
-      updatedCategories = selectedCategories.filter(id => id !== categoryId);
-    } else {
-      updatedCategories = [...selectedCategories, categoryId];
-    }
-    setSelectedCategories(updatedCategories);
-    onFilterChange({ 
-      categories: updatedCategories, 
-      priceRange: { min: priceRange[0], max: priceRange[1] }, 
-      ratings: selectedRatings 
+  // Function to apply filters and call the parent callback
+  const applyFilters = (categories, price, ratings) => {
+    onFilterChange({
+      categories: categories,
+      priceRange: { min: price[0], max: price[1] },
+      ratings: ratings
     });
+  };
+
+  const handleCategoryChange = (categoryId) => {
+    const updatedCategories = selectedCategories.includes(categoryId)
+      ? selectedCategories.filter(id => id !== categoryId)
+      : [...selectedCategories, categoryId];
+    setSelectedCategories(updatedCategories);
+    applyFilters(updatedCategories, priceRange, selectedRatings);
   };
 
   const handlePriceChange = (event, newValue) => {
     setPriceRange(newValue);
-    onFilterChange({ 
-      categories: selectedCategories, 
-      priceRange: { min: newValue[0], max: newValue[1] }, 
-      ratings: selectedRatings 
-    });
+    // This will update while dragging
+    applyFilters(selectedCategories, newValue, selectedRatings);
   };
 
   const handleRatingChange = (rating) => {
-    let updatedRatings;
-    if (selectedRatings.includes(rating)) {
-      updatedRatings = selectedRatings.filter(r => r !== rating);
-    } else {
-      updatedRatings = [...selectedRatings, rating];
-    }
+    const updatedRatings = selectedRatings.includes(rating)
+      ? selectedRatings.filter(r => r !== rating)
+      : [...selectedRatings, rating];
     setSelectedRatings(updatedRatings);
-    onFilterChange({ 
-      categories: selectedCategories, 
-      priceRange: { min: priceRange[0], max: priceRange[1] }, 
-      ratings: updatedRatings 
-    });
+    applyFilters(selectedCategories, priceRange, updatedRatings);
   };
 
   const clearAllFilters = () => {
     setSelectedCategories([]);
     setPriceRange([0, 60000]);
     setSelectedRatings([]);
-    onFilterChange({ 
-      categories: [], 
-      priceRange: { min: 0, max: 60000 }, 
-      ratings: [] 
-    });
+    applyFilters([], [0, 60000], []);
   };
 
-  const hasActiveFilters = selectedCategories.length > 0 || 
-    priceRange[0] > 0 || priceRange[1] < 60000 || 
+  const hasActiveFilters = selectedCategories.length > 0 ||
+    priceRange[0] > 0 || priceRange[1] < 60000 ||
     selectedRatings.length > 0;
 
   return (
@@ -112,10 +100,10 @@ const ProductFilter = ({ onFilterChange }) => {
           <Typography variant="subtitle1" sx={{ fontWeight: 'medium' }}>
             Categories
             {selectedCategories.length > 0 && (
-              <Chip 
-                size="small" 
-                label={selectedCategories.length} 
-                sx={{ ml: 1, height: 20 }} 
+              <Chip
+                size="small"
+                label={selectedCategories.length}
+                sx={{ ml: 1, height: 20 }}
                 color="primary"
               />
             )}
@@ -134,7 +122,7 @@ const ProductFilter = ({ onFilterChange }) => {
                   />
                 }
                 label={category.name}
-                sx={{ 
+                sx={{
                   '& .MuiFormControlLabel-label': { fontSize: '0.875rem' },
                   '&:hover': { bgcolor: 'grey.50', borderRadius: 1 },
                   px: 1,
@@ -155,10 +143,10 @@ const ProductFilter = ({ onFilterChange }) => {
           <Typography variant="subtitle1" sx={{ fontWeight: 'medium' }}>
             Price Range
             {(priceRange[0] > 0 || priceRange[1] < 60000) && (
-              <Chip 
-                size="small" 
-                label="Active" 
-                sx={{ ml: 1, height: 20 }} 
+              <Chip
+                size="small"
+                label="Active"
+                sx={{ ml: 1, height: 20 }}
                 color="primary"
               />
             )}
@@ -201,10 +189,10 @@ const ProductFilter = ({ onFilterChange }) => {
           <Typography variant="subtitle1" sx={{ fontWeight: 'medium' }}>
             Rating
             {selectedRatings.length > 0 && (
-              <Chip 
-                size="small" 
-                label={selectedRatings.length} 
-                sx={{ ml: 1, height: 20 }} 
+              <Chip
+                size="small"
+                label={selectedRatings.length}
+                sx={{ ml: 1, height: 20 }}
                 color="primary"
               />
             )}
@@ -228,7 +216,7 @@ const ProductFilter = ({ onFilterChange }) => {
                     <Typography variant="body2">& up</Typography>
                   </Box>
                 }
-                sx={{ 
+                sx={{
                   '&:hover': { bgcolor: 'grey.50', borderRadius: 1 },
                   px: 1,
                   py: 0.5,
@@ -239,52 +227,6 @@ const ProductFilter = ({ onFilterChange }) => {
           </FormGroup>
         </AccordionDetails>
       </Accordion>
-
-      {/* Active Filters Summary */}
-      {hasActiveFilters && (
-        <>
-          <Divider />
-          <Box sx={{ p: 2 }}>
-            <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
-              Active Filters:
-            </Typography>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {selectedCategories.map(categoryId => {
-                const category = categoriesData.find(cat => cat.id === categoryId);
-                return (
-                  <Chip
-                    key={categoryId}
-                    label={category?.name}
-                    onDelete={() => handleCategoryChange(categoryId)}
-                    size="small"
-                    color="primary"
-                    variant="outlined"
-                  />
-                );
-              })}
-              {(priceRange[0] > 0 || priceRange[1] < 60000) && (
-                <Chip
-                  label={`Rs ${priceRange[0].toLocaleString()} - Rs ${priceRange[1].toLocaleString()}`}
-                  onDelete={() => setPriceRange([0, 60000])}
-                  size="small"
-                  color="primary"
-                  variant="outlined"
-                />
-              )}
-              {selectedRatings.map(rating => (
-                <Chip
-                  key={rating}
-                  label={`${rating}★ & up`}
-                  onDelete={() => handleRatingChange(rating)}
-                  size="small"
-                  color="primary"
-                  variant="outlined"
-                />
-              ))}
-            </Box>
-          </Box>
-        </>
-      )}
     </Paper>
   );
 };

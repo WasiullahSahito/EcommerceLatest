@@ -1,15 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userInfo: [],
-  products: [],
-  wishlist: [], // Wishlist state added
+  // CORRECTED: Check localStorage for existing user session. Default to null if not found.
+  userInfo: localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : null,
+  products: [], // Represents the shopping cart
+  wishlist: [],
 };
 
 export const orebiSlice = createSlice({
   name: "orebi",
   initialState,
   reducers: {
+    // ============== User Authentication Reducers ===============
+    loginUser: (state, action) => {
+      state.userInfo = action.payload;
+      // Save user info to localStorage to persist the session
+      localStorage.setItem("userInfo", JSON.stringify(action.payload));
+    },
+    logoutUser: (state) => {
+      state.userInfo = null;
+      // Remove user info from localStorage on logout
+      localStorage.removeItem("userInfo");
+      // Clear cart and wishlist for a clean logout
+      state.products = [];
+      state.wishlist = [];
+    },
+
+    // ================== Cart Reducers ========================
     addToCart: (state, action) => {
       const item = state.products.find(
         (item) => item._id === action.payload._id
@@ -46,7 +65,8 @@ export const orebiSlice = createSlice({
     resetCart: (state) => {
       state.products = [];
     },
-    // ================== Wishlist Actions Start here =================
+
+    // ================== Wishlist Reducers =================
     toggleWishlist: (state, action) => {
       const item = state.wishlist.find(
         (item) => item._id === action.payload._id
@@ -59,16 +79,18 @@ export const orebiSlice = createSlice({
         state.wishlist.push(action.payload);
       }
     },
-    // ================== Wishlist Actions End here ===================
   },
 });
 
 export const {
+  loginUser,
+  logoutUser,
   addToCart,
   increaseQuantity,
   drecreaseQuantity,
   deleteItem,
   resetCart,
-  toggleWishlist, // Export the new action
+  toggleWishlist,
 } = orebiSlice.actions;
+
 export default orebiSlice.reducer;

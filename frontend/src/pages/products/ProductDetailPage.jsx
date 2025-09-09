@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProductDetail from '../../components/home/Products/ProductDetail';
-import { productsData } from '../../constants/productsData'; // YE LINE ADD KAREIN
+import { productsData } from '../../constants/productsData'; 
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -68,7 +68,7 @@ const ProductDetailPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primeColor mx-auto mb-4"></div>
           <div className="text-xl text-gray-600">Loading product details...</div>
         </div>
       </div>
@@ -83,7 +83,7 @@ const ProductDetailPage = () => {
           <div className="text-xl text-gray-600 mb-4">Product not found</div>
           <button 
             onClick={() => navigate('/products')}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-primeColor text-white px-6 py-2 rounded-lg hover:bg-primeColor transition-colors"
           >
             Back to Products
           </button>

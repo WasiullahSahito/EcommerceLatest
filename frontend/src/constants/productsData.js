@@ -147,7 +147,7 @@ export const productsData = [
     price: 85000,
     originalPrice: 95000,
     discount: 11,
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=60",
+    image: "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-neverfull-mm--N40599_PM2_Front%20view.jpg",
     categoryId: "67cfa3773c7fa6b8e3276e7a",
     category: "Bags",
     brand: "Louis Vuitton",
@@ -475,10 +475,46 @@ export const productsData = [
     fastDelivery: true,
     verified: true
   },
+  {
+    id: 26,
+    name: "Modern Silver Bracelet",
+    price: 3200,
+    originalPrice: 4000,
+    discount: 20,
+    image: "https://images.unsplash.com/photo-1679973300513-4a53455ab35e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fFNpbHZlciUyMEJyYWNlbGV0JTIwQ2hhaW58ZW58MHx8MHx8fDA%3D",
+    categoryId: "67cfa3c23c7fa6b8e3276ea3",
+    category: "Jewellery",
+    brand: "Pandora",
+    rating: 4.4,
+    reviewCount: 223,
+    inStock: true,
+    description: "Sterling silver bracelet with intricate chain design",
+    badge: "Trending",
+    fastDelivery: true,
+    verified: true
+  },
+  {
+    id: 27,
+    name: "Classic Silver Bracelet",
+    price: 3200,
+    originalPrice: 4000,
+    discount: 20,
+    image: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fFNpbHZlciUyMEJyYWNlbGV0JTIwQ2hhaW58ZW58MHx8MHx8fDA%3D",
+    categoryId: "67cfa3c23c7fa6b8e3276ea3",
+    category: "Jewellery",
+    brand: "Pandora",
+    rating: 4.4,
+    reviewCount: 223,
+    inStock: true,
+    description: "Sterling silver bracelet with intricate chain design",
+    badge: "Trending",
+    fastDelivery: true,
+    verified: true
+  },
 
   // Footwear
   {
-    id: 26,
+    id: 28,
     name: "Nike Air Max 270",
     price: 12000,
     originalPrice: 15000,
@@ -496,7 +532,7 @@ export const productsData = [
     verified: true
   },
   {
-    id: 27,
+    id: 29,
     name: "Puma Running Shoes",
     price: 8500,
     originalPrice: 10500,
@@ -514,12 +550,66 @@ export const productsData = [
     verified: true
   },
   {
-    id: 28,
+    id: 30,
     name: "Formal Leather Shoes",
     price: 7500,
     originalPrice: 9500,
     discount: 21,
-    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&auto=format&fit=crop&q=60",
+    image: "https://uomoattire.com/cdn/shop/products/44-formal_shoes_1_1000x.jpg?v=1666360554",
+    categoryId: "67cfa3873c7fa6b8e3276e7f",
+    category: "Footwear",
+    brand: "Clarks",
+    rating: 4.4,
+    reviewCount: 178,
+    inStock: true,
+    description: "Professional leather shoes perfect for office and formal events",
+    badge: "Formal",
+    fastDelivery: true,
+    verified: true
+  },
+  {
+    id: 31,
+    name: "Casual Vans",
+    price: 7500,
+    originalPrice: 9500,
+    discount: 21,
+    image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c2hvZXN8ZW58MHx8MHx8fDA%3D",
+    categoryId: "67cfa3873c7fa6b8e3276e7f",
+    category: "Footwear",
+    brand: "Vans",
+    rating: 4.4,
+    reviewCount: 178,
+    inStock: true,
+    description: "Professional leather shoes perfect for office and formal events",
+    badge: "Formal",
+    fastDelivery: true,
+    verified: true
+  },
+  {
+    id: 32,
+    name: "Elegant Heels",
+    price: 7500,
+    originalPrice: 9500,
+    discount: 21,
+    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNob2VzfGVufDB8fDB8fHww",
+    categoryId: "67cfa3873c7fa6b8e3276e7f",
+    category: "Footwear",
+    brand: "Clarks",
+    rating: 4.4,
+    reviewCount: 178,
+    inStock: true,
+    description: "Professional leather shoes perfect for office and formal events",
+    badge: "Formal",
+    fastDelivery: true,
+    verified: true
+  },
+  {
+    id: 33,
+    name: "White Sneakers",
+    price: 7500,
+    originalPrice: 9500,
+    discount: 21,
+    image: "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHNob2VzfGVufDB8fDB8fHww",
     categoryId: "67cfa3873c7fa6b8e3276e7f",
     category: "Footwear",
     brand: "Clarks",
@@ -534,7 +624,7 @@ export const productsData = [
 
   // Additional Electronics
   {
-    id: 29,
+    id: 34,
     name: "iPad Pro 12.9 inch",
     price: 75000,
     originalPrice: 85000,
@@ -552,7 +642,7 @@ export const productsData = [
     verified: true
   },
   {
-    id: 30,
+    id: 35,
     name: "Dell XPS 13 Laptop",
     price: 65000,
     originalPrice: 75000,
@@ -572,7 +662,7 @@ export const productsData = [
 
   // Additional Fashion
   {
-    id: 31,
+    id: 36,
     name: "Gucci Designer Shirt",
     price: 15000,
     originalPrice: 18000,
@@ -590,7 +680,7 @@ export const productsData = [
     verified: true
   },
   {
-    id: 32,
+    id: 37,
     name: "Versace Silk Scarf",
     price: 8500,
     originalPrice: 10500,
@@ -610,45 +700,45 @@ export const productsData = [
 
   // Additional Beauty
   {
-    id: 33,
+    id: 38,
     name: "YSL Rouge Lipstick",
-    price: 4500,
-    originalPrice: 5500,
-    discount: 18,
+    price: 3200,
+    originalPrice: 3800,
+    discount: 16,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmolib6q7gFwNULog2Hv5YzVKHU6ou0l-7cg&s",
     categoryId: "67cfa3a63c7fa6b8e3276e89",
     category: "Beauty",
     brand: "YSL",
     rating: 4.8,
-    reviewCount: 278,
+    reviewCount: 199,
     inStock: true,
-    description: "Luxurious lipstick with rich color and long-lasting formula",
+    description: "Luxury satin finish lipstick with rich color.",
     badge: "Luxury",
     fastDelivery: true,
-    verified: true
+    verified: true,
   },
   {
-    id: 34,
+    id: 39,
     name: "Skincare Set Complete",
-    price: 6500,
-    originalPrice: 8000,
-    discount: 19,
-    image: "https://m.media-amazon.com/images/I/71O2qhSyOeL._UF1000,1000_QL80_.jpg",
+    price: 9900,
+    originalPrice: 12000,
+    discount: 18,
+    image: "https://missuniverseskincare.com/cdn/shop/files/MissU-Web-Complete-Set.jpg?v=1698261590",
     categoryId: "67cfa3a63c7fa6b8e3276e89",
     category: "Beauty",
     brand: "The Ordinary",
     rating: 4.6,
-    reviewCount: 445,
+    reviewCount: 312,
     inStock: true,
-    description: "Complete skincare routine set with cleanser, toner, and moisturizer",
-    badge: "Complete",
+    description: "Complete skincare set with cleanser, toner, and moisturizer.",
+    badge: "Set",
     fastDelivery: true,
-    verified: true
+    verified: true,
   },
 
   // Additional Wellness
   {
-    id: 35,
+    id: 40,
     name: "Fitness Tracker Smart",
     price: 8999,
     originalPrice: 12000,
@@ -666,7 +756,7 @@ export const productsData = [
     verified: true
   },
   {
-    id: 36,
+    id: 41,
     name: "Meditation Cushion",
     price: 1800,
     originalPrice: 2200,
@@ -686,7 +776,7 @@ export const productsData = [
 
   // Additional Bags
   {
-    id: 37,
+    id: 42,
     name: "Prada Shoulder Bag",
     price: 55000,
     originalPrice: 65000,
@@ -704,7 +794,7 @@ export const productsData = [
     verified: true
   },
   {
-    id: 38,
+    id: 43,
     name: "Travel Backpack Large",
     price: 4500,
     originalPrice: 5500,
@@ -721,5 +811,4 @@ export const productsData = [
     fastDelivery: true,
     verified: true
   },
-
 ];
